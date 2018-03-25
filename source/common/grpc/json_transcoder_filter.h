@@ -68,7 +68,7 @@ public:
    * This allows Envoy to select the upstream cluster based on the incoming request
    * rather than the outgoing.
    */
-   bool skip_clearing_route_cache();
+   bool match_incoming_request_route();
 
 private:
   /**
@@ -83,7 +83,7 @@ private:
   std::unique_ptr<google::grpc::transcoding::TypeHelper> type_helper_;
   Protobuf::util::JsonPrintOptions print_options_;
 
-  bool skip_clearing_route_cache_{false};
+  bool match_incoming_request_route_{false};
 };
 
 typedef std::shared_ptr<JsonTranscoderConfig> JsonTranscoderConfigSharedPtr;
