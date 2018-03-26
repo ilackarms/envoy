@@ -14,7 +14,7 @@ namespace Configuration {
 HttpFilterFactoryCb GrpcJsonTranscoderFilterConfig::createFilter(
     const envoy::config::filter::http::transcoder::v2::GrpcJsonTranscoder& proto_config,
     const std::string&, FactoryContext&) {
-  ASSERT(!proto_config.proto_descriptor().empty());
+  ASSERT(!(proto_config.proto_descriptor().empty() && proto_config.proto_descriptor_bin().empty()));
   ASSERT(proto_config.services_size() > 0);
 
   Grpc::JsonTranscoderConfigSharedPtr filter_config =
